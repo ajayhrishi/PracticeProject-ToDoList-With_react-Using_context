@@ -6,8 +6,10 @@ function App(){
     return <div >
             <div id="ModalReceiver"></div>
             <Heading/>
-            <AddTask/>
-            <BodyDisplay/>
+            <div className="border w-3/4 rounded">
+            <AddTask className="items-center justify-center"/>
+            <BodyDisplay className="items-center justify-center"/>
+            </div>
             </div>
 }
 

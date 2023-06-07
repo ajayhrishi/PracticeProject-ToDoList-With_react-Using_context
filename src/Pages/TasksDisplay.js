@@ -37,14 +37,16 @@ function TasksDiplay(){
                 </div>
             }
 
-            return <div className="border p-1 font-bold flex" key={element.id}> 
-            <div className="flex ">
-            <div className=" my-4 justify-end" >{element.value}</div>
+            return <div className="p-1 font-bold flex" key={element.id}> 
+            
+            <div className="my-4 justify-end " >{element.value}</div>
+            <div className="flex ml-auto my-2">
             <div className={iconClass} onClick={()=>{CompleteTheTask(element.id)}}><AiFillCheckCircle/></div>
             <div className={iconClass} onClick={()=>{setEditIdState(element.id)}}><AiFillEdit/></div>
             <div className={iconClass} onClick={()=>{deletePendingTask(element.id)}}><AiFillCloseSquare/></div>
+            </div>
         </div>  
-        </div>  
+
         });
     /*----------- creation of completed Tasks List JSX element  ---------- */
        const JSXcompletedTask = completed.map((element)=>{
@@ -58,22 +60,25 @@ function TasksDiplay(){
             </form>
             </div>
         }
-        return <div className="border p-1 font-bold flex" key={element.id}> <div className="flex ">
-        <div className=" my-4 justify-end" >{element.value}</div>
+
+        return <div className="p-1 font-bold line-through " key={element.id}> <div className="flex">
+    
+        <div className="my-4 justify-end" >{element.value}</div>
+        <div className="flex ml-auto my-2">
         <div className={iconClass} onClick={()=>{AssignBackToPending(element.id)}}><AiOutlineUndo/></div>
         <div className={iconClass} onClick={()=>{setEditIdState(element.id+"c")}}><AiFillEdit/></div>
         <div className={iconClass} onClick={()=>{deleteOneCompletedTask(element.id)}}><AiFillCloseSquare/></div>
     </div>  
     </div>  
+    </div>
        });
     /*-------------- Elements that will be returning as JSX elements -------------------- */
 
-    return <div>
-        <div className="bg-orange-300 mt-10">
+    return <div className=" ml-24 justify-center">
+        <div className="bg-orange-300 mt-10 w-1/2 rounded">
         {[...JSXtasks]}
         </div>
-        
-        <div className="bg-green-300 mt-20">
+        <div className="bg-green-300 mt-20 w-1/2 rounded justify-center">
         {[...JSXcompletedTask] }   
         </div>   
     </div>

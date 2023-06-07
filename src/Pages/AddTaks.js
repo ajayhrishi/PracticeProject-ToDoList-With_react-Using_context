@@ -23,7 +23,7 @@ function AddTask({add,className,...rest}){
         setEditValue(event.target.value);
     }
 
-const newClassName = "border h-24"+ className;
+const newClassName = "ml-24 mt-16 h-24"+ className;
 
 return  <div className={newClassName} {...rest}> 
 <form onSubmit={HandleAutoRefresh} className="flex">
@@ -33,13 +33,5 @@ return  <div className={newClassName} {...rest}>
 </div>
 }
 
-
-
 export default AddTask;
 
-
-/*
-
-
-
-*/

@@ -55,7 +55,7 @@ function TheContext({children}){
     }
 /*---------------- Func for all the operations on the Completed Task lists ------------------------*/
     const CompleteTheTask = async(id) => {
-        let data = await axios.get("http://localhost:3005/tasks/"+id); data = data.data;
+        let data = await axios.get("http://localhost:3005/tasks/"+id); data = {value:data.data.value};
         await axios.delete("http://localhost:3005/tasks/"+id);
         await axios.post("http://localhost:3005/completedTasks/",data);
         fetchTasks();
@@ -65,7 +65,7 @@ function TheContext({children}){
         fetchTasks();
     }
     const AssignBackToPending = async(id) => {
-        let data = await axios.get("http://localhost:3005/completedTasks/"+id); data = data.data;
+        let data = await axios.get("http://localhost:3005/completedTasks/"+id); data = {value:data.data.value};
         await axios.delete("http://localhost:3005/completedTasks/"+id);
         await axios.post("http://localhost:3005/tasks/",data);
         fetchTasks();
