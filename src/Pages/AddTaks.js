@@ -1,10 +1,13 @@
 import Button from "../components/Button";
 import InputBox from "../components/InputBox";
-import { useState } from "react";
+import { useContext } from "react";
+
+import values from "../context/Context";
 
 function AddTask({add,className,...rest}){
 
-    const [capturing,setCapturing]= useState('');
+    const {editValue,setEditValue,AddPendingTask} = useContext(values);  // Refer context page to know the use of each props
+
 
     const HandleAutoRefresh = (event) =>{
             event.preventDefault();
@@ -12,23 +15,22 @@ function AddTask({add,className,...rest}){
     }
 
     const updateTasks = () =>{
-        add(capturing);
-        setCapturing('');
+        AddPendingTask(editValue);
+        setEditValue('');
     }
 
     const captureChange = (event) =>{
-        setCapturing(event.target.value);
+        setEditValue(event.target.value);
     }
 
 const newClassName = "border h-24"+ className;
 
-return  <div className={newClassName}> 
+return  <div className={newClassName} {...rest}> 
 <form onSubmit={HandleAutoRefresh} className="flex">
-<InputBox onChange={captureChange} className=" m-4 p-1" value={capturing}> Add New Task </InputBox>
+<InputBox onChange={captureChange} className=" m-4 p-1" value={editValue}> Add New Task </InputBox>
 <Button className="m-4 h-8" onClick={()=>updateTasks}> Add it </Button>
 </form>
 </div>
-   
 }
 
 

@@ -3,8 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css"
 
+import { TheContext } from "./context/Context";
+
 const el = document.getElementById("root");
 const root = ReactDOM.createRoot(el);
 
 
-root.render(<App/>);
+root.render(<TheContext><App/></TheContext>);
